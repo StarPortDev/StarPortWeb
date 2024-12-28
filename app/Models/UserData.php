@@ -2,17 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class User extends Authenticatable
+class UserData extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasUuids;
+    /** @use HasFactory<\Database\Factories\UserDataFactory> */
+    use HasFactory, HasUuids;
 
     /**
      * Generate a new UUID for the model.
@@ -32,16 +30,10 @@ class User extends Authenticatable
         return ['id'];
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    protected $table = 'user_data';
+
     protected $fillable = [
         'character_id',
-        'character_name',
-        'character_owner_hash',
-        'token',
-        'refresh_token'
+        'avatar_url'
     ];
 }
